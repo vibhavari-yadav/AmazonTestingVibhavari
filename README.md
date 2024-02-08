@@ -36,8 +36,7 @@ public class Amazon {
 		driver.findElement(By.id("ap_password")).sendKeys("your_password");
 		driver.findElement(By.id("signInSubmit")).click();
 
-		// Verify if login is successful by checking if a specific element is present on
-		// the page
+		// Verify if login is successful
 		boolean isLoggedin = driver.findElement(By.id("nav-link-accountList")).isDisplayed();
 		Assert.assertTrue(isLoggedin, "Login failed");
 		
@@ -47,8 +46,7 @@ public class Amazon {
 		searchBox.submit();
 
 		// Click on the first search result
-		WebElement firstSearchResult = driver
-				.findElement(By.xpath("(//span[@class='a-size-medium a-color-base a-text-normal'])[1]"));
+		WebElement firstSearchResult = driver.findElement(By.xpath("(//span[@class='a-size-medium a-color-base a-text-normal'])[1]"));
 		firstSearchResult.click();
 
 		// Add the item to the cart
@@ -66,5 +64,8 @@ public class Amazon {
 		// Proceed to checkout
 		WebElement proceedToCheckoutButton = driver.findElement(By.xpath("//input[@value='Proceed to checkout']"));
 		proceedToCheckoutButton.click();
+
+    		//Close Browser
+      		driver.quit();
 	}
 }
